@@ -1,3 +1,4 @@
 Ez lesz az elso file, amit feltoltunk gitre.
 Ezt a github-on keresztül írtam ide.
+Valami mast is
 Modositas
