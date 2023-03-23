@@ -16,7 +16,15 @@ public class Jatek {
     }
 
     public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
+        if (difficulty < 0) {
+            this.difficulty = 0;
+        }
+        else if (difficulty > 10) {
+            this.difficulty = 10;
+        }
+        else {
+            this.difficulty = difficulty;
+        }
     }
 
     public Konzol getConsole() {
@@ -31,8 +39,14 @@ public class Jatek {
         this.name = name;
         this.console = console;
 
-        if (difficulty < 0) this.difficulty = 0;
-        else if (difficulty > 10) this.difficulty = 10;
-        else this.difficulty = difficulty;
+        if (difficulty < 0) {
+            this.difficulty = 0;
+        }
+        else if (difficulty > 10) {
+            this.difficulty = 10;
+        }
+        else {
+            this.difficulty = difficulty;
+        }
     }
 }
