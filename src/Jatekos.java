@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jatekos {
@@ -62,11 +63,13 @@ public class Jatekos {
         }
     }
 
-    public void kockul() {
+    public List<Jatek> kockul() {
+        List<Jatek> completedGames = new ArrayList<>();
         gameList.forEach(game -> {
             try {
                 console.jatszik(game, this.skill);
                 this.skill++;
+                completedGames.add(game);
             } catch (Exception e) {
                 String message = this.name + " nem tudta végigjátszani a " + game.getName() + "-t";
 
@@ -81,5 +84,6 @@ public class Jatekos {
                 System.err.println(message + ".");
             }
         });
+        return completedGames;
     }
 }
