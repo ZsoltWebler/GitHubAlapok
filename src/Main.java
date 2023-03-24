@@ -66,5 +66,17 @@ public class Main {
                 new XBOX(),
                 gameList
         );
+
+        jatekos1.kockul().forEach(game ->System.out.println(jatekos1.getName() +
+                " sikeresen végigjátszotta a(z) "+
+                game.getName() +
+                "-t."
+        ));
+
+        jatekos2.kockul().forEach(game ->System.out.println(jatekos2.getName() +
+                " sikeresen végigjátszotta a(z) "+
+                game.getName() +
+                "-t."
+        ));
     }
 }
