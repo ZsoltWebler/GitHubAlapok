@@ -1,8 +1,10 @@
+import java.util.List;
+
 public class Jatekos {
     private String name;
     private int skill;
     private Konzol console;
-    private Jatek[] gameList;
+    private List<Jatek> gameList;
 
     public String getName() {
         return name;
@@ -36,15 +38,15 @@ public class Jatekos {
         this.console = console;
     }
 
-    public Jatek[] getGameList() {
+    public List<Jatek> getGameList() {
         return gameList;
     }
 
-    public void setGameList(Jatek[] gameList) {
+    public void setGameList(List<Jatek> gameList) {
         this.gameList = gameList;
     }
 
-    public Jatekos(String name, int skill, Konzol console, Jatek[] gameList) {
+    public Jatekos(String name, int skill, Konzol console, List<Jatek> gameList) {
         this.name = name;
         this.console = console;
         this.gameList = gameList;
@@ -61,24 +63,23 @@ public class Jatekos {
     }
 
     public void kockul() {
-        try {
-            for (Jatek game : gameList) {
+        gameList.forEach(game -> {
+            try {
                 console.jatszik(game, this.skill);
+                this.skill++;
+            } catch (Exception e) {
+                String message = this.name + " nem tudta végigjátszani a " + game.getName() + "-t";
+
+                if (e.getClass().getName().equals("GitGud")) {
+                    message += ", mert nem elég ügyes";
+                }
+
+                if (e.getClass().getName().equals("NemTamogatottJatek")) {
+                    message += ", mert a(z) " + this.console.getName() + " nem támogatja ezt a játékot";
+                }
+
+                System.err.println(message + ".");
             }
-        } catch (Exception e) {
-            String message = this.name + "nem tudta végigjátszani a(z) " + game.getName() + "-t";
-
-            if (e.instanceOf() == "GitGud") {
-                message += ", mert nem elég ügyes";
-            }
-
-            if (e.instanceOf() == "NemTamogatottJatek") {
-                message += ", mert a(z) " + this.console + " nem támogatja ezt a játékot"
-            }
-
-            System.err.println(message + ".");
-        }
-
-        this.skill++;
+        });
     }
 }
