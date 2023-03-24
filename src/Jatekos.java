@@ -20,13 +20,9 @@ public class Jatekos {
     }
 
     public void setSkill(int skill) {
-        if (skill < 0) {
-            this.skill = 0;
-        }
-        else if (skill > 10) {
-            this.skill = 10;
-        }
-        else {
+        if ((skill < 0 || (skill > 10))) {
+            this.skill = Math.min(Math.max(skill, 0), 10);
+        } else {
             this.skill = skill;
         }
     }
@@ -49,18 +45,9 @@ public class Jatekos {
 
     public Jatekos(String name, int skill, Konzol console, List<Jatek> gameList) {
         this.name = name;
+        this.setSkill(skill);
         this.console = console;
         this.gameList = gameList;
-
-        if (skill < 0) {
-            this.skill = 0;
-        }
-        else if (skill > 10) {
-            this.skill = 10;
-        }
-        else {
-            this.skill = skill;
-        }
     }
 
     public List<Jatek> kockul() {

@@ -16,13 +16,9 @@ public class Jatek {
     }
 
     public void setDifficulty(int difficulty) {
-        if (difficulty < 0) {
-            this.difficulty = 0;
-        }
-        else if (difficulty > 10) {
-            this.difficulty = 10;
-        }
-        else {
+        if ((difficulty < 0 || (difficulty > 10))) {
+            this.difficulty = Math.min(Math.max(difficulty, 0), 10);
+        } else {
             this.difficulty = difficulty;
         }
     }
@@ -37,16 +33,7 @@ public class Jatek {
 
     public Jatek(String name, int difficulty, Konzol console) {
         this.name = name;
+        this.setDifficulty(difficulty);
         this.console = console;
-
-        if (difficulty < 0) {
-            this.difficulty = 0;
-        }
-        else if (difficulty > 10) {
-            this.difficulty = 10;
-        }
-        else {
-            this.difficulty = difficulty;
-        }
     }
 }
